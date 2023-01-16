@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react"
 
+const formatDate = (date) => {
+  const Year = date.getFullYear();
+  const Month = date.getMonth() + 1;
+  const Day = date.getDate();
+
+  return `${Day}.${Month}.${Year}`;
+}
+
 const App = () => {
 
   // Состоянии задач
   const[todos, setTodos] = useState([
     {
       id: "1",
-      name: "купить продукты",
+      name: "Купить продукты",
       date: new Date(),
       checked: false,
     },
@@ -73,8 +81,8 @@ const App = () => {
   return(
     <div className="layout">
       <div>
-        <form onSubmit={(e) => onSubmitHandle(e)}>
-          <h2>Добавить задачу</h2>
+        <form onSubmit={(e) => onSubmitHandle(e)} className="form">
+          <h2 className="title">Добавить задачу</h2>
           <input type="text" placeholder="Купить молоко..." onChange={(e) => onChangeHandle(e)} value={value}/>
         </form>
       </div>
@@ -85,15 +93,15 @@ const App = () => {
         {
           todos.map((todo) => {
             return(
-              <div>
-                <h3>{todo.name} ({todo.date.toString()})</h3>
+              <div className="todo">
+                <h3 className="title_todo">{todo.name} ({formatDate(todo.date)})</h3>
                 <div>
-                  <button onClick={() => onCheckedToggle(todo.id)}>
+                  <button onClick={() => onCheckedToggle(todo.id)} className="green_btn">
                     {
                       todo.checked ? "Не выполнено" : "Выполено"
                     }
                   </button>
-                  <button onClick={() => onDeleteTodoById(todo.id)}>Удалить</button>
+                  <button onClick={() => onDeleteTodoById(todo.id)} className="red_btn">Удалить</button>
                 </div>
               </div>
             )

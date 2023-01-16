@@ -4,16 +4,73 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 400;
 }
 
 body{
   font-size: 16px;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
   font-weight: 400;
+  background-color: #000;
 }
 
 .layout{
   max-width: 960px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.title{
+  margin-top: 40px;
+  font-size: 40px;
+  text-align: center;
+  color: skyblue;
+  font-weight: 600;
+}
+
+.todo{
+  margin-bottom: 15px;
+  display: flex;
+  font-size: 16px;
+  color: #fff;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input{
+  padding: 8px;
+  border: 1px solid rgb(92, 92, 92);
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 20px 0;
+  width: 320px;
+  outline: none;
+}
+
+button{
+  border: none;
+  padding: 8px;
+  background-color: #fff;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.title_todo{
+  width: 70%;
+}
+
+.green_btn{
+  background-color: rgb(183, 255, 105);
+  color: #000;
+}
+
+.red_btn{
+  background-color: rgb(255, 125, 105);
+  color: #fff;
 }
