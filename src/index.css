@@ -10,5 +10,10 @@ body{
   font-size: 16px;
   font-family: sans-serif;
   font-weight: 400;
-  padding: 30px;
+}
+
+.layout{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
