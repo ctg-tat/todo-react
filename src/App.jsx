@@ -1,4 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
+const UseEffectComponent = () => {
+  useEffect(() => {
+    return () => console.log("Компонент был удален!");
+  }, []);
+
+  return(
+    <div>
+      Тестовый компонент для проверки удаления компонента со страницы
+    </div>
+  )
+}
 
 const App = () => {
 
@@ -11,6 +23,12 @@ const App = () => {
     email: "",
     password: "",
   });
+
+  const [a, setA] = useState(0);
+
+  useEffect(() => {
+    console.log('useEffect()');
+  }, [count, form]);
 
   const onChangeHandle = (e) => {
     setName(e.target.value);
@@ -42,11 +60,14 @@ const App = () => {
   return(
     <div>
       <p>Вы нажали на меня {count} раз(а)!</p>
-
       <button onClick={() => setCount((prevState) => prevState+1)}>+1</button>
       <button onClick={() => setCount(count+5)}>+5</button>
 
       <br />
+
+      {
+        count >= 10 ? <h1>Компонент больше не доступен</h1> : <UseEffectComponent />
+      }
 
       <h1>
         Привет, {name}!
@@ -56,7 +77,6 @@ const App = () => {
       <br />
 
       <input type="text" onKeyDown={(e) => onSubmitAddSkill(e)} />
-
       <ul>
           {
             skills.map((skill) =>  <li>{skill}</li>)
