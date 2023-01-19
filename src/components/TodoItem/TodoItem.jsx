@@ -15,6 +15,7 @@ const TodoItem = ({ setTodos, todo }) => {
             }
             return todo;
         });
+        localStorage.setItem('todos', JSON.stringify(prevState));
         return prevState;
         })
     }
@@ -24,6 +25,7 @@ const TodoItem = ({ setTodos, todo }) => {
         setTodos((prevState) => {
         prevState = [...prevState];
         prevState = prevState.filter((todo) => todo.id !== id);
+        localStorage.setItem('todos', JSON.stringify(prevState));
         return prevState;
         });
     }

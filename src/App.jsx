@@ -2,25 +2,19 @@ import { useState, useEffect } from "react"
 import Header from "./components/Header/Header";
 import TodoItem from "./components/TodoItem/TodoItem";
 
-const initialTodo = [
-  {
-    id: "1",
-    name: "Купить продукты",
-    date: new Date(),
-    checked: false,
-  },
-  {
-    id: "2",
-    name: "Заправить автомобиль Lada",
-    date: new Date(),
-    checked: false,
-  }
-];
+const initialTodo = [];
 
 const App = () => {
 
   // Состоянии задач
   const[todos, setTodos] = useState(initialTodo);
+
+  // Получение данных  из localStorage
+  useEffect(() => {
+    if(localStorage.getItem('todos') !== null){
+      setTodos(JSON.parse(localStorage.getItem('todos')));
+    }
+  }, []);
 
   return(
     <div className="layout">
